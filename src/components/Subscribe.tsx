@@ -6,8 +6,8 @@ import { Mail } from "lucide-react";
 const Subscribe = () => {
   return (
     <section className="py-16 px-4">
-      <Card className="max-w-6xl mx-auto overflow-hidden">
-        <CardContent className="p-0">
+      <Card className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden border-none">
+        <CardContent className="p-0 border-none">
           <div className="grid lg:grid-cols-12 gap-8">
             {/* Decorative Background */}
             <div className="lg:col-span-5 bg-gradient-to-br from-blue-500 to-blue-600 p-8 flex items-center justify-center">
