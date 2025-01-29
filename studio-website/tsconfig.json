@@ -8,6 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "module": "Preserve",
     "moduleDetection": "force",
+    "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true
