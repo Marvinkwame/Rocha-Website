@@ -1,15 +1,15 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
+import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
 const plugins = [structureTool()]
 
 if (process.env.NODE_ENV === 'development') {
-  const {visionTool} = await import('@sanity/vision')
   plugins.push(visionTool())
 }
 
-const config = defineConfig({
+export default defineConfig({
   name: 'default',
   title: 'Your Project Name',
 
@@ -22,5 +22,3 @@ const config = defineConfig({
     types: schemaTypes,
   },
 })
-
-export default config
