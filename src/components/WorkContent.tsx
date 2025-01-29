@@ -8,6 +8,22 @@ import { client } from "@/sanity/client";
 
 const builder = imageUrlBuilder(client);
 
+// Define interfaces for our Sanity data structures
+interface SanityImage {
+  asset: {
+    _ref: string;
+    _type: "reference";
+  };
+}
+
+interface Post extends SanityDocument {
+  title: string;
+  description?: string;
+  currentSlug: string;
+  image?: SanityImage;
+  _createdAt: string;
+}
+
 const POSTS_QUERY = `*[_type == 'post'] | order(_createdAt desc) {
   title,
   description,
@@ -19,15 +35,8 @@ const POSTS_QUERY = `*[_type == 'post'] | order(_createdAt desc) {
 const options = { next: { revalidate: 30 } };
 
 export default async function WorkContent() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+  const posts = await client.fetch<Post[]>(POSTS_QUERY, {}, options);
 
-
-  type SanityImage = {
-    asset: {
-      _ref: string;
-      _type: "reference";
-    };
-  };
   function urlFor(source: SanityImage) {
     return builder.image(source).url();
   }
@@ -61,7 +70,7 @@ export default async function WorkContent() {
 
                 <CardContent className="p-6">
                   <div className="space-y-2">
-                    <h2 className="text-xl font-semibold line-clamp-2 transition-colors duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+                    <h2 className="text-xl font-semibold line-clamp-2 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-600">
                       {post.title}
                     </h2>
 
