@@ -4,7 +4,7 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/client";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   title,
@@ -38,7 +38,7 @@ export default async function PostPage({
     : null;
 
   return (
-    <article className="min-h-screen bg-gray-50 dark:bg-zinc-900">
+    <article className="min-h-screen bg-gray-50 dark:bg-zinc-900 mt-24">
       {/* Hero Section */}
       <div className="w-full bg-gradient-to-b from-purple-100 to-white dark:from-purple-950 dark:to-zinc-900 py-8">
         <div className="container mx-auto max-w-4xl px-4">

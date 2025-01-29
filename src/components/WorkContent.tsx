@@ -21,7 +21,14 @@ const options = { next: { revalidate: 30 } };
 export default async function WorkContent() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
 
-  function urlFor(source: any) {
+
+  type SanityImage = {
+    asset: {
+      _ref: string;
+      _type: "reference";
+    };
+  };
+  function urlFor(source: SanityImage) {
     return builder.image(source).url();
   }
 
